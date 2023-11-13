@@ -41,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                     catch (Exception e){
                         System.out.println(e);
-                        Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                        if(e.getLocalizedMessage() != null){
+                            Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+                        }
                     }
 
                 }
