@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"></ImageView>
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/shoe_app_text"
+        android:text="The Shoe App"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="50sp"
+        android:textStyle="bold|italic"
+        android:textColor="#EF7315"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/shoe_app_text"
+        android:layout_margin="5pt"
+        android:padding="10pt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Enter Admin password"
+            android:inputType="textPassword"
+            tools:layout_editor_relativeX="0dp"
+            android:background="@color/white"
+            android:padding="5pt"
+            tools:layout_editor_relativeY="0dp"></EditText>
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Log in"
+            tools:layout_editor_relativeX="0dp"
+            tools:layout_editor_relativeY="85dp"></Button>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
