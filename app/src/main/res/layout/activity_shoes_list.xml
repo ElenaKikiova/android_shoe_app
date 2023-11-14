@@ -29,6 +29,38 @@
             android:layout_height="wrap_content" >
         </ListView>
 
+
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_gravity="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_shoe_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white" />
+
+        <ImageView
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@drawable/fab_plus"
+            android:scaleType="centerCrop"
+            android:background="@android:color/transparent"
+            android:layout_alignBaseline="@id/add_shoe_button"
+            android:translationZ="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp">
+        </ImageView>
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
