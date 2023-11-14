@@ -40,20 +40,52 @@ public class ShoeDetails extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         try {
-                            dbHelper = new DatabaseHelper(getApplicationContext());
+                            String name = editName.getText().toString();
+                            String imageSrc = editImageSrc.getText().toString();
+                            Float price = Float.parseFloat(editPrice.getText().toString());
+                            Integer quantity = Integer.parseInt(editQuantity.getText().toString());
                             String dateNow = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
-                            dbHelper.insert(
-                                    editName.getText().toString(),
-                                    editImageSrc.getText().toString(),
-                                    Float.parseFloat(editPrice.getText().toString()),
-                                    Integer.parseInt(editQuantity.getText().toString()),
-                                    dateNow
-                            );
-                            Toast.makeText(getApplicationContext(), "Shoe created successfully", Toast.LENGTH_LONG).show();
+                            // Validation
+                            boolean valid = true;
+                            String error = "";
 
-                            Intent i = new Intent(ShoeDetails.this, ShoesList.class);
-                            startActivity(i);
+                            if(name == "" || !Validation.Validate(name, Validation.nameValidator)){
+                                valid = false;
+                                error = "Name should be 2-20 symbols, letters and numbers";
+                            }
+                            if(!Validation.Validate(imageSrc, Validation.urlValidator)){
+                                valid = false;
+                                error = "Image source should be a valid URL";
+                            }
+                            if(!Validation.Validate(price.toString(), Validation.priceValidator)){
+                                valid = false;
+                                error = "Price should be a valid number, with floating point or decimal point";
+                            }
+                            if(!Validation.Validate(quantity.toString(), Validation.numberValidator)){
+                                valid = false;
+                                error = "Price should be a valid number, with floating point or decimal point";
+                            }
+
+                            if(!valid){
+                                Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
+                            }
+                            else {
+
+                                dbHelper = new DatabaseHelper(getApplicationContext());
+
+                                dbHelper.insert(
+                                        editName.getText().toString(),
+                                        editImageSrc.getText().toString(),
+                                        Float.parseFloat(editPrice.getText().toString()),
+                                        Integer.parseInt(editQuantity.getText().toString()),
+                                        dateNow
+                                );
+                                Toast.makeText(getApplicationContext(), "Shoe created successfully", Toast.LENGTH_LONG).show();
+
+                                Intent i = new Intent(ShoeDetails.this, ShoesList.class);
+                                startActivity(i);
+                            }
                         }
                         catch (Exception e){
                             if(e.getLocalizedMessage() != null){
