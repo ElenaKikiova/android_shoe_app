@@ -7,83 +7,87 @@
     tools:context=".ShoeDetails">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="5pt"
-        tools:context=".ListActivity">
+    <ScrollView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <ScrollView android:id="@+id/scroll_view"
-            android:layout_width="fill_parent"
-            android:layout_height="1000px">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="5pt"
+            tools:context=".ListActivity">
 
-            <TextView
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_width="match_parent"
-                android:layout_height="50sp"
-                android:textSize="35sp"
-                android:text="Shoes Details"></TextView>
+                <TextView
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp"
+                    android:textSize="35sp"
+                    android:text="Shoes Details"></TextView>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/img_placeholder"
-                ></ImageView>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/img_placeholder"
+                    ></ImageView>
 
-            <TextView
-                android:id="@+id/shoe_name"
-                android:layout_width="match_parent"
-                android:layout_height="55sp"
-                android:textSize="35sp"
-                android:text="Name"></TextView>
+                <TextView
+                    android:id="@+id/shoe_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:textSize="35dp"
+                    android:text="Name"></TextView>
 
-            <EditText
-                android:id="@+id/shoe_name_input"
-                android:layout_width="match_parent"
-                android:layout_height="55sp"
-                android:textSize="35sp"
-                android:hint="Name"></EditText>
+                <EditText
+                    android:id="@+id/shoe_name_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:textSize="35dp"
+                    android:hint="Name"></EditText>
 
-            <TextView
-                android:id="@+id/shoe_price"
-                android:layout_width="match_parent"
-                android:layout_height="25sp"
-                android:text="Price"></TextView>
+                <TextView
+                    android:id="@+id/shoe_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:text="Price"></TextView>
 
-            <EditText
-                android:id="@+id/shoe_price_input"
-                android:inputType="number"
-                android:layout_width="match_parent"
-                android:layout_height="25sp"
-                android:hint="Price"></EditText>
+                <EditText
+                    android:id="@+id/shoe_price_input"
+                    android:inputType="number"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:hint="Price"></EditText>
 
-            <TextView
-                android:id="@+id/shoe_quantity"
-                android:layout_width="match_parent"
-                android:layout_height="25sp"
-                android:text="Quantity"></TextView>
+                <TextView
+                    android:id="@+id/shoe_quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="Quantity"></TextView>
 
-            <EditText
-                android:id="@+id/shoe_quantity_input"
-                android:layout_width="match_parent"
-                android:layout_height="25sp"
-                android:hint="Quantity"></EditText>
+                <EditText
+                    android:id="@+id/shoe_quantity_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:hint="Quantity"></EditText>
 
-            <TextView
-                android:id="@+id/shoe_date_added"
-                android:layout_width="match_parent"
-                android:layout_height="25sp"
-                android:text="Date"></TextView>
+                <TextView
+                    android:id="@+id/shoe_date_added"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="Date"></TextView>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Save">
-            </Button>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="Save">
+                </Button>
+
+            </LinearLayout>
 
         </ScrollView>
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
