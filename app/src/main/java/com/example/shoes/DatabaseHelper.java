@@ -48,7 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void insert(String name, String imageSrc, float price, Integer quantity, String dateAdded){
         String query = "INSERT INTO shoes(" +
                 "Name, ImageSrc, Price, Quantity, DateAdded" +
-                "), VALUES(?, ?, ?, ?, ?)";
+                ") VALUES(?, ?, ?, ?, ?)";
 
         _db.execSQL(query, new Object[]{
                 name, imageSrc, price, quantity, dateAdded
