@@ -51,6 +51,9 @@ public class ShoeDetails extends AppCompatActivity {
                                     dateNow
                             );
                             Toast.makeText(getApplicationContext(), "Shoe created successfully", Toast.LENGTH_LONG).show();
+
+                            Intent i = new Intent(ShoeDetails.this, ShoesList.class);
+                            startActivity(i);
                         }
                         catch (Exception e){
                             if(e.getLocalizedMessage() != null){
