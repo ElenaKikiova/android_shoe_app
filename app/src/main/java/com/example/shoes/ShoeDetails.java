@@ -3,11 +3,13 @@ package com.example.shoes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -34,6 +36,15 @@ public class ShoeDetails extends AppCompatActivity {
         editQuantity = findViewById(R.id.shoe_quantity_input);
 
         saveButton = findViewById(R.id.save_button);
+
+        editImageSrc.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                Log.i(null, "onfoc");
+//                ImageView viewImage = findViewById(R.id.list_view_image);
+//                viewImage.setImageURI(Uri.parse(editImageSrc.getText().toString()));
+            }
+        });
 
         saveButton.setOnClickListener(
                 new View.OnClickListener() {
