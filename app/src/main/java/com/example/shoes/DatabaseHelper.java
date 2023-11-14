@@ -1,4 +1,5 @@
 package com.example.shoes;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,6 +9,7 @@ import android.provider.BaseColumns;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -33,13 +35,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         _db = this.getWritableDatabase();
     }
 
-    public ArrayList<Shoe> readAll(){
-        String query = "SELECT * FROM shoes";
+    public List<Shoe> readAll(){
+
+        List<Shoe> shoeArrayList = new ArrayList<>();
+
+        String query = "SELECT * FROM shoes ORDER by DateAdded";
 
         Cursor cursor = _db.rawQuery(query, null);
 
-        ArrayList<Shoe> shoeArrayList
-                = new ArrayList<>();
+        while(cursor.moveToNext()){
+            @SuppressLint("Range") Shoe shoe = new Shoe(
+                    Integer.parseInt(cursor.getString(cursor.getColumnIndex("ID"))),
+                    cursor.getString(cursor.getColumnIndex("Name")),
+                    cursor.getString(cursor.getColumnIndex("ImageSrc")),
+                    Float.parseFloat(cursor.getString(cursor.getColumnIndex("Price"))),
+                    Integer.parseInt(cursor.getString(cursor.getColumnIndex("Quantity"))),
+                    cursor.getString(cursor.getColumnIndex("DateAdded"))
+            );
+
+            shoeArrayList.add(shoe);
+        }
 
         return shoeArrayList;
 

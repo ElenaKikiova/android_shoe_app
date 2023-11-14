@@ -60,6 +60,7 @@ public class ShoeDetails extends AppCompatActivity {
                         }
                         finally {
                             if(dbHelper != null){
+                                dbHelper.close();
                                 dbHelper = null;
                             }
                         }

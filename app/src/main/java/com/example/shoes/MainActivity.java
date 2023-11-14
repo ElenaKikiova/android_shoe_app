@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,19 +29,12 @@ public class MainActivity extends AppCompatActivity {
             new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     try {
-
-                        DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
-
-                        ArrayList<Shoe> shoeList = dbHelper.readAll();
-
-                        System.out.println("send");
                         Intent i = new Intent(MainActivity.this, ShoesList.class);
                         startActivity(i);
                     }
                     catch (Exception e){
-                        System.out.println(e);
+                        Log.e(null, e.getLocalizedMessage());
                         if(e.getLocalizedMessage() != null){
                             Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                         }
