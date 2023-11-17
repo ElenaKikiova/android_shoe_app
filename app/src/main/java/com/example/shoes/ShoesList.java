@@ -81,31 +81,17 @@ public class ShoesList extends AppCompatActivity {
         }
     }
 
-    protected void FeedList() throws Exception{
-
-        dbHelper = new DatabaseHelper(getApplicationContext());
-        List<Shoe> shoeList = dbHelper.readAll();
-        CustomListAdapter adapter = new CustomListAdapter(this, R.layout.activity_shoe_list_item, shoeList);
-
-        listView = (ListView) findViewById(R.id.shoes_list);
-        listView.setAdapter(adapter);
-
-        dbHelper.close();
-        dbHelper = null;
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shoes_list);
-        addShoeButton = findViewById(R.id.add_shoe_button);
-
+    protected void FeedList(){
 
         try {
-            this.FeedList();
+            dbHelper = new DatabaseHelper(getApplicationContext());
+            List<Shoe> shoeList = dbHelper.readAll();
+            CustomListAdapter adapter = new CustomListAdapter(this, R.layout.activity_shoe_list_item, shoeList);
+
+            listView = (ListView) findViewById(R.id.shoes_list);
+            listView.setAdapter(adapter);
         }
         catch (Exception e){
-            Log.e(null, e.getLocalizedMessage());
             if(e.getLocalizedMessage() != null){
                 Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
             }
@@ -116,6 +102,15 @@ public class ShoesList extends AppCompatActivity {
                 dbHelper = null;
             }
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_shoes_list);
+        addShoeButton = findViewById(R.id.add_shoe_button);
+
+        this.FeedList();
 
         addShoeButton.setOnClickListener(
                 new View.OnClickListener() {
