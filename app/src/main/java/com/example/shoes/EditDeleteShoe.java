@@ -8,7 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,15 +23,38 @@ public class EditDeleteShoe extends AppCompatActivity {
     protected EditText editName, editImageSrc, editPrice, editQuantity;
     protected Button saveButton;
     protected DatabaseHelper dbHelper;
+
+    protected Integer shoeId;
+
+    public void setView(Integer shoeId){
+
+        Shoe shoe = dbHelper.getById(shoeId);
+
+        editName = findViewById(R.id.shoe_name_input);
+        editName.setText(shoe.getName());
+
+        editImageSrc = findViewById(R.id.shoe_image_src);
+        editImageSrc.setText(shoe.getImageSrc());
+
+        editPrice = findViewById(R.id.shoe_price_input);
+        editPrice.setText(shoe.getPrice().toString());
+
+        editQuantity = findViewById(R.id.shoe_quantity_input);
+        editQuantity.setText(shoe.getQuantity().toString());
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_delete_shoe);
 
-        editName = findViewById(R.id.shoe_name_input);
-        editImageSrc = findViewById(R.id.shoe_image_src);
-        editPrice = findViewById(R.id.shoe_price_input);
-        editQuantity = findViewById(R.id.shoe_quantity_input);
+        dbHelper = new DatabaseHelper(getApplicationContext());
+
+
+        Intent i = getIntent();
+        shoeId = i.getIntExtra("shoe_id", 0);
+
+        setView(shoeId);
 
         saveButton = findViewById(R.id.save_button);
 

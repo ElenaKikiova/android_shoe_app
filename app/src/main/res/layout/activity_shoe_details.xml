@@ -45,19 +45,21 @@
                 <TextView
                     android:id="@+id/shoe_price"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
-                    android:text="Price"></TextView>
+                    android:layout_height="55dp"
+                    android:textSize="30dp"
+                    android:textColor="#ff0000"
+                    android:text="0"></TextView>
 
                 <TextView
                     android:id="@+id/shoe_quantity"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
+                    android:layout_height="30dp"
                     android:text="Quantity"></TextView>
 
                 <TextView
                     android:id="@+id/shoe_date_added"
                     android:layout_width="match_parent"
-                    android:layout_height="25dp"
+                    android:layout_height="30dp"
                     android:text="Date"></TextView>
 
                 <Button

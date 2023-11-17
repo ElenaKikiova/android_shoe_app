@@ -30,8 +30,6 @@ public class ShoeDetails extends AppCompatActivity {
 
     public void setView(Integer shoeId){
 
-        Log.i(null, "shoeid" + shoeId);
-
         Shoe shoe = dbHelper.getById(shoeId);
 
         TextView shoeName = findViewById(R.id.shoe_name);
@@ -40,6 +38,14 @@ public class ShoeDetails extends AppCompatActivity {
         ImageView shoeImage = findViewById(R.id.shoe_image);
         Picasso.get().load(shoe.getImageSrc()).into(shoeImage);
 
+        TextView shoePrice = findViewById(R.id.shoe_price);
+        shoePrice.setText(shoe.getPrice().toString() + "lv");
+
+        TextView shoeQuantity = findViewById(R.id.shoe_quantity);
+        shoeQuantity.setText("Quantity: " + shoe.getQuantity().toString());
+
+        TextView shoeDateAdded = findViewById(R.id.shoe_date_added);
+        shoeDateAdded.setText("Date added: " + shoe.getDateAdded().toString());
     }
 
     @Override
@@ -62,6 +68,7 @@ public class ShoeDetails extends AppCompatActivity {
                     public void onClick(View v) {
                         try {
                             Intent i = new Intent(ShoeDetails.this, EditDeleteShoe.class);
+                            i.putExtra("shoe_id", shoeId);
                             startActivity(i);
                         }
                         catch (Exception e){

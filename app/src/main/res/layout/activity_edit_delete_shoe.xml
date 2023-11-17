@@ -28,11 +28,10 @@
                 android:textSize="35dp"
                 android:text="Edit Shoe"></TextView>
 
-            <EditText
-                android:id="@+id/shoe_image_src"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:hint="Image URL"></EditText>
+                android:layout_height="30dp"
+                android:text="Name"></TextView>
 
             <EditText
                 android:id="@+id/shoe_name_input"
@@ -41,12 +40,33 @@
                 android:textSize="35dp"
                 android:hint="Name"></EditText>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Image URL"></TextView>
+
+            <EditText
+                android:id="@+id/shoe_image_src"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="Image URL"></EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Price"></TextView>
+
             <EditText
                 android:id="@+id/shoe_price_input"
                 android:inputType="numberDecimal|numberSigned"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:hint="Price"></EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Quantity"></TextView>
 
             <EditText
                 android:id="@+id/shoe_quantity_input"
