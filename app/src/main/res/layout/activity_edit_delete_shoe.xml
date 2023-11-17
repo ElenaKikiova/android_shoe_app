@@ -22,11 +22,12 @@
             tools:context=".ListActivity">
 
             <TextView
+                android:id="@+id/title"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textSize="35dp"
-                android:text="Edit Shoe"></TextView>
+                android:text="Create Shoe"></TextView>
 
             <TextView
                 android:layout_width="match_parent"

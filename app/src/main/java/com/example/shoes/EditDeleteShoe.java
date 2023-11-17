@@ -30,16 +30,12 @@ public class EditDeleteShoe extends AppCompatActivity {
 
         Shoe shoe = dbHelper.getById(shoeId);
 
-        editName = findViewById(R.id.shoe_name_input);
+        TextView title = findViewById(R.id.title);
+        title.setText("Edit Shoe");
+
         editName.setText(shoe.getName());
-
-        editImageSrc = findViewById(R.id.shoe_image_src);
         editImageSrc.setText(shoe.getImageSrc());
-
-        editPrice = findViewById(R.id.shoe_price_input);
         editPrice.setText(shoe.getPrice().toString());
-
-        editQuantity = findViewById(R.id.shoe_quantity_input);
         editQuantity.setText(shoe.getQuantity().toString());
     }
 
@@ -50,11 +46,17 @@ public class EditDeleteShoe extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(getApplicationContext());
 
+        editName = findViewById(R.id.shoe_name_input);
+        editImageSrc = findViewById(R.id.shoe_image_src);
+        editPrice = findViewById(R.id.shoe_price_input);
+        editQuantity = findViewById(R.id.shoe_quantity_input);
 
         Intent i = getIntent();
-        shoeId = i.getIntExtra("shoe_id", 0);
+        shoeId = i.getIntExtra("shoe_id", -1);
 
-        setView(shoeId);
+        if(shoeId != -1){
+            setView(shoeId);
+        }
 
         saveButton = findViewById(R.id.save_button);
 
