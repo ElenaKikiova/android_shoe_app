@@ -39,22 +39,19 @@
         android:layout_centerHorizontal="true"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Enter Admin password"
-            android:inputType="textPassword"
-            tools:layout_editor_relativeX="0dp"
-            android:background="@color/white"
-            android:padding="5pt"
-            tools:layout_editor_relativeY="0dp"></EditText>
-
         <Button
             android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Log in"
+            android:text="Browse Shoes"
+            tools:layout_editor_relativeX="0dp"
+            tools:layout_editor_relativeY="85dp"></Button>
+
+        <Button
+            android:id="@+id/maps_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="See Shoe Stores"
             tools:layout_editor_relativeX="0dp"
             tools:layout_editor_relativeY="85dp"></Button>
     </LinearLayout>
