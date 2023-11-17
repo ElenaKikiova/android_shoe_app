@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -98,7 +99,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         _db.execSQL(query, new Object[]{
                 name, imageSrc, price, quantity, id
         });
+    }
 
+    public void delete(Integer id){
+        String query = "DELETE FROM shoes WHERE id = ?";
+
+        _db.execSQL(query, new Object[]{id});
     }
 
     @Override public void onCreate(SQLiteDatabase sqLiteDatabase) {

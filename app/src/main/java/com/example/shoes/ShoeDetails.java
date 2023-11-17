@@ -1,7 +1,9 @@
 package com.example.shoes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,7 +26,7 @@ import java.util.Locale;
 public class ShoeDetails extends AppCompatActivity {
 
     protected EditText editName, editImageSrc, editPrice, editQuantity;
-    protected Button editButton;
+    protected Button editButton, deleteButton;
     protected DatabaseHelper dbHelper;
     protected Integer shoeId;
 
@@ -61,6 +63,7 @@ public class ShoeDetails extends AppCompatActivity {
         setView(shoeId);
 
         editButton = findViewById(R.id.edit_button);
+        deleteButton = findViewById(R.id.delete_button);
 
         editButton.setOnClickListener(
                 new View.OnClickListener() {
@@ -81,5 +84,17 @@ public class ShoeDetails extends AppCompatActivity {
                     }
                 }
         );
+
+        deleteButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        DeleteDialog confirmDelete = new DeleteDialog();
+                        confirmDelete.setShoeId(shoeId);
+                        confirmDelete.show(getSupportFragmentManager(), "DELETE_DIALOG");
+                    }
+                }
+        );
     }
+
 }
