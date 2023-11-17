@@ -89,6 +89,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         _db.execSQL(query, new Object[]{
                 name, imageSrc, price, quantity, dateAdded
         });
+    }
+
+    public void update(Integer id, String name, String imageSrc, float price, Integer quantity){
+        String query = "UPDATE shoes SET " +
+                "Name = ?, ImageSrc = ?, Price = ?, Quantity = ? WHERE id = ?";
+
+        _db.execSQL(query, new Object[]{
+                name, imageSrc, price, quantity, id
+        });
 
     }
 

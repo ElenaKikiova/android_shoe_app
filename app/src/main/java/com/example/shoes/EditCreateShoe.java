@@ -69,7 +69,6 @@ public class EditCreateShoe extends AppCompatActivity {
                             String imageSrc = editImageSrc.getText().toString();
                             Float price = Float.parseFloat(editPrice.getText().toString());
                             Integer quantity = Integer.parseInt(editQuantity.getText().toString());
-                            String dateNow = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
                             // Validation
                             boolean valid = true;
@@ -98,14 +97,31 @@ public class EditCreateShoe extends AppCompatActivity {
 
                                 dbHelper = new DatabaseHelper(getApplicationContext());
 
-                                dbHelper.insert(
-                                        editName.getText().toString(),
-                                        editImageSrc.getText().toString(),
-                                        Float.parseFloat(editPrice.getText().toString()),
-                                        Integer.parseInt(editQuantity.getText().toString()),
-                                        dateNow
-                                );
-                                Toast.makeText(getApplicationContext(), "Shoe created successfully", Toast.LENGTH_LONG).show();
+                                String successMessage = "Shoe created successfully";
+
+                                if(shoeId == -1) {
+                                    String dateNow = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                                    dbHelper.insert(
+                                            editName.getText().toString(),
+                                            editImageSrc.getText().toString(),
+                                            Float.parseFloat(editPrice.getText().toString()),
+                                            Integer.parseInt(editQuantity.getText().toString()),
+                                            dateNow
+                                    );
+                                }
+                                else {
+                                    dbHelper.update(
+                                            shoeId,
+                                            editName.getText().toString(),
+                                            editImageSrc.getText().toString(),
+                                            Float.parseFloat(editPrice.getText().toString()),
+                                            Integer.parseInt(editQuantity.getText().toString())
+                                    );
+
+                                    successMessage = "Shoe updated successfully";
+                                }
+
+                                Toast.makeText(getApplicationContext(), successMessage, Toast.LENGTH_LONG).show();
 
                                 Intent i = new Intent(EditCreateShoe.this, ShoesList.class);
                                 startActivity(i);
