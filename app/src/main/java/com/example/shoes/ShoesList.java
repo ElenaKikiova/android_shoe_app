@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 import java.net.URI;
@@ -56,7 +57,7 @@ public class ShoesList extends AppCompatActivity {
 
                 ImageView viewImage = convertView.findViewById(R.id.list_view_image);
 
-                viewImage.setImageURI(Uri.parse(shoe.getImageSrc()));
+                Picasso.get().load(shoe.getImageSrc()).into(viewImage);
 
                 TextView viewName = convertView.findViewById(R.id.list_view_name);
                 viewName.setText(shoe.getName());

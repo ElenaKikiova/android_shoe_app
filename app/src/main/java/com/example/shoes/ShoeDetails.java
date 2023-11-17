@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,7 +38,7 @@ public class ShoeDetails extends AppCompatActivity {
         shoeName.setText(shoe.getName());
 
         ImageView shoeImage = findViewById(R.id.shoe_image);
-        shoeImage.setImageURI(Uri.parse(shoe.getImageSrc()));
+        Picasso.get().load(shoe.getImageSrc()).into(shoeImage);
 
     }
 
