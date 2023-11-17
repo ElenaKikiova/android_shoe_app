@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class EditDeleteShoe extends AppCompatActivity {
+public class EditCreateShoe extends AppCompatActivity {
 
     protected EditText editName, editImageSrc, editPrice, editQuantity;
     protected Button saveButton;
@@ -42,7 +42,7 @@ public class EditDeleteShoe extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_delete_shoe);
+        setContentView(R.layout.activity_edit_create_shoe);
 
         dbHelper = new DatabaseHelper(getApplicationContext());
 
@@ -107,7 +107,7 @@ public class EditDeleteShoe extends AppCompatActivity {
                                 );
                                 Toast.makeText(getApplicationContext(), "Shoe created successfully", Toast.LENGTH_LONG).show();
 
-                                Intent i = new Intent(EditDeleteShoe.this, ShoesList.class);
+                                Intent i = new Intent(EditCreateShoe.this, ShoesList.class);
                                 startActivity(i);
                             }
                         } catch (Exception e) {

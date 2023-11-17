@@ -121,7 +121,7 @@ public class ShoesList extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(ShoesList.this, EditDeleteShoe.class);
+                        Intent i = new Intent(ShoesList.this, EditCreateShoe.class);
                         startActivity(i);
                     }
                 }

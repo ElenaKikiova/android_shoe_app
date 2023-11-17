@@ -67,7 +67,7 @@ public class ShoeDetails extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         try {
-                            Intent i = new Intent(ShoeDetails.this, EditDeleteShoe.class);
+                            Intent i = new Intent(ShoeDetails.this, EditCreateShoe.class);
                             i.putExtra("shoe_id", shoeId);
                             startActivity(i);
                         }
