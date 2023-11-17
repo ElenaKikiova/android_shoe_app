@@ -29,16 +29,11 @@
                     android:text="Shoes Details"></TextView>
 
                 <ImageView
+                    android:id="@+id/shoe_image"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:src="@drawable/img_placeholder"
                     ></ImageView>
-
-                <EditText
-                    android:id="@+id/shoe_image_src"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:hint="Image URL"></EditText>
 
                 <TextView
                     android:id="@+id/shoe_name"
@@ -47,38 +42,17 @@
                     android:textSize="35dp"
                     android:text="Name"></TextView>
 
-                <EditText
-                    android:id="@+id/shoe_name_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:textSize="35dp"
-                    android:hint="Name"></EditText>
-
                 <TextView
                     android:id="@+id/shoe_price"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:text="Price"></TextView>
 
-                <EditText
-                    android:id="@+id/shoe_price_input"
-                    android:inputType="numberDecimal|numberSigned"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:hint="Price"></EditText>
-
                 <TextView
                     android:id="@+id/shoe_quantity"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:text="Quantity"></TextView>
-
-                <EditText
-                    android:id="@+id/shoe_quantity_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:inputType="number"
-                    android:hint="Quantity"></EditText>
 
                 <TextView
                     android:id="@+id/shoe_date_added"
@@ -87,11 +61,11 @@
                     android:text="Date"></TextView>
 
                 <Button
-                    android:id="@+id/save_button"
+                    android:id="@+id/edit_button"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginBottom="20dp"
-                    android:text="Save">
+                    android:text="Edit">
                 </Button>
 
             </LinearLayout>

@@ -60,6 +60,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public Shoe getById(Integer shoeId){
+
+        String query = "SELECT * FROM shoes WHERE id = " + shoeId.toString();
+
+        Cursor cursor = _db.rawQuery(query, null);
+
+        cursor.moveToFirst();
+
+        @SuppressLint("Range") Shoe shoe = new Shoe(
+            Integer.parseInt(cursor.getString(cursor.getColumnIndex("ID"))),
+            cursor.getString(cursor.getColumnIndex("Name")),
+            cursor.getString(cursor.getColumnIndex("ImageSrc")),
+            Float.parseFloat(cursor.getString(cursor.getColumnIndex("Price"))),
+            Integer.parseInt(cursor.getString(cursor.getColumnIndex("Quantity"))),
+            cursor.getString(cursor.getColumnIndex("DateAdded"))
+        );
+
+        return shoe;
+
+    }
+
     public void insert(String name, String imageSrc, float price, Integer quantity, String dateAdded){
         String query = "INSERT INTO shoes(" +
                 "Name, ImageSrc, Price, Quantity, DateAdded" +

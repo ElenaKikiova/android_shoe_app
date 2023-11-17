@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -21,95 +22,53 @@ import java.util.Locale;
 public class ShoeDetails extends AppCompatActivity {
 
     protected EditText editName, editImageSrc, editPrice, editQuantity;
-    protected Button saveButton;
+    protected Button editButton;
     protected DatabaseHelper dbHelper;
+    protected Integer shoeId;
+
+    public void setView(Integer shoeId){
+
+        Log.i(null, "shoeid" + shoeId);
+
+        Shoe shoe = dbHelper.getById(shoeId);
+
+        TextView shoeName = findViewById(R.id.shoe_name);
+        shoeName.setText(shoe.getName());
+
+        ImageView shoeImage = findViewById(R.id.shoe_image);
+        shoeImage.setImageURI(Uri.parse(shoe.getImageSrc()));
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shoe_details);
 
+        dbHelper = new DatabaseHelper(getApplicationContext());
 
-        editName = findViewById(R.id.shoe_name_input);
-        editImageSrc = findViewById(R.id.shoe_image_src);
-        editPrice = findViewById(R.id.shoe_price_input);
-        editQuantity = findViewById(R.id.shoe_quantity_input);
+        Intent i = getIntent();
+        shoeId = i.getIntExtra("shoe_id", 0);
 
-        saveButton = findViewById(R.id.save_button);
+        setView(shoeId);
 
-        editImageSrc.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                Log.i(null, "onfoc");
-//                ImageView viewImage = findViewById(R.id.list_view_image);
-//                viewImage.setImageURI(Uri.parse(editImageSrc.getText().toString()));
-            }
-        });
+        editButton = findViewById(R.id.edit_button);
 
-        saveButton.setOnClickListener(
+        editButton.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         try {
-                            String name = editName.getText().toString();
-                            String imageSrc = editImageSrc.getText().toString();
-                            Float price = Float.parseFloat(editPrice.getText().toString());
-                            Integer quantity = Integer.parseInt(editQuantity.getText().toString());
-                            String dateNow = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-
-                            // Validation
-                            boolean valid = true;
-                            String error = "";
-
-                            if(name == "" || !Validation.Validate(name, Validation.nameValidator)){
-                                valid = false;
-                                error = "Name should be 2-20 symbols, letters and numbers";
-                            }
-                            if(!Validation.Validate(imageSrc, Validation.urlValidator)){
-                                valid = false;
-                                error = "Image source should be a valid URL";
-                            }
-                            if(!Validation.Validate(price.toString(), Validation.priceValidator)){
-                                valid = false;
-                                error = "Price should be a valid number, with floating point or decimal point";
-                            }
-                            if(!Validation.Validate(quantity.toString(), Validation.numberValidator)){
-                                valid = false;
-                                error = "Price should be a valid number, with floating point or decimal point";
-                            }
-
-                            if(!valid){
-                                Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
-                            }
-                            else {
-
-                                dbHelper = new DatabaseHelper(getApplicationContext());
-
-                                dbHelper.insert(
-                                        editName.getText().toString(),
-                                        editImageSrc.getText().toString(),
-                                        Float.parseFloat(editPrice.getText().toString()),
-                                        Integer.parseInt(editQuantity.getText().toString()),
-                                        dateNow
-                                );
-                                Toast.makeText(getApplicationContext(), "Shoe created successfully", Toast.LENGTH_LONG).show();
-
-                                Intent i = new Intent(ShoeDetails.this, ShoesList.class);
-                                startActivity(i);
-                            }
+                            Intent i = new Intent(ShoeDetails.this, EditDeleteShoe.class);
+                            startActivity(i);
                         }
                         catch (Exception e){
+                            Log.e(null, e.getLocalizedMessage());
                             if(e.getLocalizedMessage() != null){
-                                Log.e(null, e.getLocalizedMessage());
                                 Toast.makeText(getApplicationContext(), e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
-                        finally {
-                            if(dbHelper != null){
-                                dbHelper.close();
-                                dbHelper = null;
-                            }
-                        }
+
                     }
                 }
         );

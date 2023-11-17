@@ -55,10 +55,6 @@ public class ShoesList extends AppCompatActivity {
                 viewId.setText(shoe.getID().toString());
 
                 ImageView viewImage = convertView.findViewById(R.id.list_view_image);
-//                URL url = new URL(shoe.getImageSrc());
-//                InputStream content = (InputStream) url.getContent();
-//                Drawable d = Drawable.createFromStream(content , "src");
-//                viewImage.setImageDrawable(d);
 
                 viewImage.setImageURI(Uri.parse(shoe.getImageSrc()));
 
@@ -67,6 +63,17 @@ public class ShoesList extends AppCompatActivity {
 
                 TextView viewPrice = convertView.findViewById(R.id.list_view_price);
                 viewPrice.setText(shoe.getPrice().toString());
+
+                convertView.setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent i = new Intent(ShoesList.this, ShoeDetails.class);
+                                i.putExtra("shoe_id", shoe.getID());
+                                startActivity(i);
+                            }
+                        }
+                );
             }
 
             return convertView;
@@ -109,12 +116,11 @@ public class ShoesList extends AppCompatActivity {
             }
         }
 
-
         addShoeButton.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent i = new Intent(ShoesList.this, ShoeDetails.class);
+                        Intent i = new Intent(ShoesList.this, EditDeleteShoe.class);
                         startActivity(i);
                     }
                 }
